@@ -3,22 +3,24 @@ import githubContext, {
   GitHubContextProvider,
 } from "../../context/github/Githubcontex"
 import alertContex from "../../context/Alert/alertContext"
+import { loading, searchUser } from "../../context/github/GithubActions"
 GitHubContextProvider
 
 function UserSearch() {
   const [text, setText] = useState("")
 
-  const { users, dispatch, searchUser } = useContext(githubContext)
+  const { users, dispatch } = useContext(githubContext)
   const { setAlert } = useContext(alertContex)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (text === "") {
       setAlert("provide text", "error")
     } else {
-      searchUser(text)
+      dispatch({ type: "SET_LOADING" })
+      const users = await searchUser(text)
+      dispatch({ type: "POPULATE_USER", users: users })
     }
-
     setText("")
   }
   const handleChange = (e) => setText(e.target.value)

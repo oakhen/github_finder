@@ -8,7 +8,7 @@ function Home() {
   return (
     <GitHubContextProvider>
       <AlertContextProvider>
-        <div bg-400 m-auto>
+        <div>
           <Alert />
         </div>
         <div className="container mx-auto px-3 pb-12">

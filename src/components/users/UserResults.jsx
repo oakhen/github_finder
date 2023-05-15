@@ -18,5 +18,3 @@ function UserResults() {
 }
 export default UserResults
 
-/*       {import.meta.env.VITE_TOKEN}
-      {`${import.meta.env.VITE_URL}/users`} */
