@@ -3,7 +3,7 @@
     Loading function
 *---------------------------------------------------------------- 
 */
-const token = "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"
+
 export const loading = () => {
   dispatch({
     type: "SET_LOADING",
@@ -15,6 +15,9 @@ export const loading = () => {
     SEARCH USER
 *---------------------------------------------------------------- 
 */
+
+const tokens =
+  "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"
 export const searchUser = async (text) => {
   const params = new URLSearchParams({
     q: text,
@@ -22,11 +25,15 @@ export const searchUser = async (text) => {
 
   const url = `https://api.github.com/search/users?${params}`
   // loading()
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `token ${token}`,
+  const res = await fetch(
+    url,
+
+    {
+      headers: {
+        Authorization: `token ${tokens}`,
+      },
     },
-  })
+  )
   const { items } = await res.json()
 
   return items
@@ -48,7 +55,7 @@ export const getRepo = async (login) => {
 
   const res = await fetch(url, {
     headers: {
-      Authorization: `token ${import.meta.env.VITE_TOKEN}`,
+      Authorization: `token ${tokens}`,
     },
   })
   const data = await res.json()
@@ -66,7 +73,7 @@ export const getUser = async (login) => {
 
   const res = await fetch(url, {
     headers: {
-      Authorization: `token ${import.meta.env.VITE_TOKEN}`,
+      Authorization: `token ${tokens}`,
     },
   })
 

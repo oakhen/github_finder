@@ -5,7 +5,7 @@ import githubContext, {
 import alertContex from "../../context/Alert/alertContext"
 import { loading, searchUser } from "../../context/github/GithubActions"
 GitHubContextProvider
-
+/* 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 */
 function UserSearch() {
   const [text, setText] = useState("")
 
@@ -19,6 +19,7 @@ function UserSearch() {
     } else {
       dispatch({ type: "SET_LOADING" })
       const users = await searchUser(text)
+      // console.log(users)
       dispatch({ type: "POPULATE_USER", users: users })
     }
     setText("")
@@ -62,3 +63,6 @@ function UserSearch() {
   )
 }
 export default UserSearch
+
+
+/* waise dekha jae toh contex api jada relevent hai. rtk se  */
